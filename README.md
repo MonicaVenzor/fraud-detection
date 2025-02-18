@@ -63,6 +63,7 @@ POST	/predict/	Predict Fraudulent Transactions
     "is_fraud": 1
 }
 
+🛠️ Deployment
 
 📦 Docker Deployment (Optional)
 1️⃣ Build the Docker Image
@@ -70,8 +71,16 @@ docker build -t fraud-detection-api .
 2️⃣ Run the API in a Container
 docker run -p 8000:8000 fraud-detection-api
 
+📦 Deploy to Render
+1️⃣Link GitHub repo to Render.com
+2️⃣Set root directory as api/
+    Use these commands:
+    Build Command: pip install -r requirements.txt
+    Start Command: uvicorn fraud_api:app --host 0.0.0.0 --port 10000
+
+3️⃣Deploy and access API at: https://your-app-name.onrender.com
+
 🎯 Next Steps
-🔹 Deploy API to the cloud (AWS, Google Cloud, Render)
 🔹 Create a Streamlit Dashboard to visualize fraud trends
 🔹 Improve Model Performance with feature engineering
 
