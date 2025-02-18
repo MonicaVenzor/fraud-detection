@@ -9,7 +9,8 @@ import os
 model_path = os.path.join(os.path.dirname(__file__), "../models/xgb_model.pkl")
 xgb_model = joblib.load(model_path)
 
-with open("models/best_threshold.json", "r") as f:
+threshold_path = os.path.join(os.path.dirname(__file__), "../models/best_threshold.json")
+with open(threshold_path, "r") as f:
     best_threshold = json.load(f)["threshold"]
 
 # Initialize FastAPI
