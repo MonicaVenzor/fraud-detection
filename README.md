@@ -37,7 +37,7 @@ pip install -r api/requirements.txt
 uvicorn api.fraud_api:app --reload
 The API will be available at 👉 http://127.0.0.1:8000/docs
 
-🎯 API Endpoints
+🌐 API Endpoints
 Method	Endpoint	Description
 GET	/	Home Page
 POST	/predict/	Predict Fraudulent Transactions
@@ -84,5 +84,5 @@ docker run -p 8000:8000 fraud-detection-api
 🔹 Create a Streamlit Dashboard to visualize fraud trends
 🔹 Improve Model Performance with feature engineering
 
-👨‍💻 Author: Monica Venzor
+👨‍💻 🏆 Author: Monica Venzor
 📌 GitHub Repo: fraud-detection
