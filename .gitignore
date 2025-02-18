@@ -12,7 +12,7 @@ __pycache__/
 raw_data/
 
 # Ignore models (optional, unless you want to share them)
-models/*.pkl
+# models/*.pkl
 models/*.json
 
 # Ignore logs and cache files

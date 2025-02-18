@@ -3,9 +3,11 @@ import joblib
 import json
 import numpy as np
 import pandas as pd
+import os
 
 # Load the trained model and threshold
-xgb_model = joblib.load("models/xgb_model.pkl")
+model_path = os.path.join(os.path.dirname(__file__), "../models/xgb_model.pkl")
+xgb_model = joblib.load(model_path)
 
 with open("models/best_threshold.json", "r") as f:
     best_threshold = json.load(f)["threshold"]
