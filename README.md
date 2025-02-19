@@ -108,3 +108,5 @@ docker run -p 8000:8000 fraud-detection-api
 
 👨‍💻 🏆 Author: Monica Venzor
 📌 GitHub Repo: [fraud-detection](https://github.com/MonicaVenzor/fraud-detection)
+
+📌 Latest Release: [v1.0.0](https://github.com/MonicaVenzor/fraud-detection/releases/tag/v1.0.0)
