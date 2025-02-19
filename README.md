@@ -1,5 +1,7 @@
 🛡️ Fraud Detection API using Machine Learning
+
 🚀 A FastAPI-powered fraud detection system using XGBoost. This API predicts fraudulent transactions based on financial data.
+
 
 📌 Features
 ✔ FastAPI for real-time fraud prediction
@@ -18,8 +20,11 @@
    ├── 📂 notebooks/
    │   ├── fraud_detection.ipynb
    ├── 📂 raw_data/
+   ├── 📂 streamlit_app/
+   │   ├── streamlit_app.py
    ├── README.md
    ├── .gitignore
+
 
 🚀 Installation & Usage
 
@@ -63,6 +68,7 @@ POST	/predict/	Predict Fraudulent Transactions
     "is_fraud": 1
 }
 
+
 🛠️ Deployment
 
 📦 Docker Deployment (Optional)
@@ -76,13 +82,29 @@ docker run -p 8000:8000 fraud-detection-api
 2️⃣Set root directory as api/
     Use these commands:
     Build Command: pip install -r requirements.txt
-    Start Command: uvicorn fraud_api:app --host 0.0.0.0 --port 10000
+    Start Command: uvicorn fraud_api:app --host 0.0.0.0 --port $PORT
 
 3️⃣Deploy and access API at: https://your-app-name.onrender.com
 
+📦 Deploying Streamlit (Optional)
+1️⃣ Install Streamlit dependencies
+         pip install streamlit
+2️⃣ Run Streamlit Locally
+         streamlit run streamlit_app/streamlit_app.py
+3️⃣ Deploy on Streamlit Cloud
+- Go to [Streamlit Cloud](https://share.streamlit.io/)
+- Connect your GitHub repository
+- Select `streamlit_app.py` as the main entry file
+- Deploy 🎉
+4️⃣ Access your deployed Streamlit dashboard at:
+          https://your-streamlit-app.streamlit.app
+
+
 🎯 Next Steps
-🔹 Create a Streamlit Dashboard to visualize fraud trends
 🔹 Improve Model Performance with feature engineering
+🔹 Add more tests to improve reliability
+🔹 Experiment with new fraud detection algorithms
+
 
 👨‍💻 🏆 Author: Monica Venzor
-📌 GitHub Repo: fraud-detection
+📌 GitHub Repo: [fraud-detection](https://github.com/MonicaVenzor/fraud-detection)
