@@ -114,3 +114,4 @@ widgetsnbextension==4.0.13
 uvicorn
 fastapi
 xgboost
+streamlit
