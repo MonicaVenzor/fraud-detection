@@ -1,112 +1,64 @@
-🛡️ Fraud Detection API using Machine Learning
+# Fraud Detection System
 
-🚀 A FastAPI-powered fraud detection system using XGBoost. This API predicts fraudulent transactions based on financial data.
+Financial fraud is a low-frequency, high-cost event. The challenge is 
+not just building a classifier — it's building one that performs well 
+on severely imbalanced data without generating excessive false positives 
+that block legitimate transactions.
 
+## What it does
 
-📌 Features
-✔ FastAPI for real-time fraud prediction
-✔ XGBoost Model trained on financial transactions
-✔ Custom Fraud Probability Threshold for better accuracy
-✔ Endpoints for Real-Time Predictions
-✔ Docker Support (Optional for Deployment)
+End-to-end fraud detection system trained on financial transaction data. 
+Takes transaction features as input and returns a fraud probability score 
+with a calibrated decision threshold. Deployed via FastAPI with a 
+Streamlit interface for interactive testing.
 
-📂 fraud_detection_api/
-   ├── 📂 api/
-   │   ├── fraud_api.py
-   │   ├── requirements.txt
-   ├── 📂 models/
-   │   ├── xgb_model.pkl
-   │   ├── best_threshold.json
-   ├── 📂 notebooks/
-   │   ├── fraud_detection.ipynb
-   ├── 📂 raw_data/
-   ├── 📂 streamlit_app/
-   │   ├── streamlit_app.py
-   ├── README.md
-   ├── .gitignore
+## Stack
 
+`Python` `XGBoost` `FastAPI` `Streamlit` `Docker` `scikit-learn` `SMOTE`
 
-🚀 Installation & Usage
+## Technical decisions
 
-1️⃣ Clone the Repository
-git clone https://github.com/YOUR_GITHUB_USERNAME/fraud_detection_api.git
-cd fraud_detection_api
+Class imbalance was handled with SMOTE oversampling on the minority 
+class. The decision threshold was optimized separately from model 
+training to balance precision and recall for the fraud detection 
+use case, where false negatives (missed fraud) are more costly than 
+false positives.
 
-2️⃣ Create a Virtual Environment & Install Dependencies
-python -m venv venv
-source venv/bin/activate  # Mac/Linux
-venv\Scripts\activate  # Windows
+Model: XGBoost with custom probability threshold. Evaluation metrics: 
+Precision, Recall, F1-score.
+
+## API
+
+```
+POST /predict/
+```
+
+Input: transaction features (amount, balance deltas, transaction type).
+Output: fraud probability and binary classification.
+
+## Run locally
+
+```bash
+git clone https://github.com/MonicaVenzor/fraud-detection.git
+cd fraud-detection
 pip install -r api/requirements.txt
-
-3️⃣ Run the FastAPI Server
 uvicorn api.fraud_api:app --reload
-The API will be available at 👉 http://127.0.0.1:8000/docs
+```
 
-🌐 API Endpoints
-Method	Endpoint	Description
-GET	/	Home Page
-POST	/predict/	Predict Fraudulent Transactions
+API available at: `http://127.0.0.1:8000/docs`
 
-📌 Example Request (JSON)
-{
-    "step": 1,
-    "amount": 5000,
-    "oldbalanceOrg": 10000,
-    "newbalanceOrig": 5000,
-    "oldbalanceDest": 0,
-    "newbalanceDest": 0,
-    "isFlaggedFraud": 0,
-    "type_CASH_OUT": 1,
-    "type_DEBIT": 0,
-    "type_PAYMENT": 0,
-    "type_TRANSFER": 0
-}
+## Structure
 
-📌 Example Response
-{
-    "fraud_probability": 0.998,
-    "is_fraud": 1
-}
+```
+fraud_detection_api/
+├── api/
+├── models/
+├── notebooks/
+├── streamlit_app/
+└── README.md
+```
 
+## Author
 
-🛠️ Deployment
-
-📦 Docker Deployment (Optional)
-1️⃣ Build the Docker Image
-docker build -t fraud-detection-api .
-2️⃣ Run the API in a Container
-docker run -p 8000:8000 fraud-detection-api
-
-📦 Deploy to Render
-1️⃣Link GitHub repo to Render.com
-2️⃣Set root directory as api/
-    Use these commands:
-    Build Command: pip install -r requirements.txt
-    Start Command: uvicorn fraud_api:app --host 0.0.0.0 --port $PORT
-
-3️⃣Deploy and access API at: https://your-app-name.onrender.com
-
-📦 Deploying Streamlit (Optional)
-1️⃣ Install Streamlit dependencies
-         pip install streamlit
-2️⃣ Run Streamlit Locally
-         streamlit run streamlit_app/streamlit_app.py
-3️⃣ Deploy on Streamlit Cloud
-- Go to [Streamlit Cloud](https://share.streamlit.io/)
-- Connect your GitHub repository
-- Select `streamlit_app.py` as the main entry file
-- Deploy 🎉
-4️⃣ Access your deployed Streamlit dashboard at:
-          https://your-streamlit-app.streamlit.app
-
-
-🎯 Next Steps
-🔹 Improve Model Performance with feature engineering
-🔹 Add more tests to improve reliability
-🔹 Experiment with new fraud detection algorithms
-
-
-👨‍💻 🏆 Author: Monica Venzor
-📌 GitHub Repo: [fraud-detection](https://github.com/MonicaVenzor/fraud-detection)
-
-📌 Latest Release: [v1.0.0](https://github.com/MonicaVenzor/fraud-detection/releases/tag/v1.0.0)
+Mónica Venzor · [LinkedIn](https://linkedin.com/in/monicavenzor) · 
+[GitHub](https://github.com/MonicaVenzor)
